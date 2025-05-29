@@ -17,7 +17,7 @@ class ComputerRoom(models.Model):  # 建议更明确
 
 class Host(models.Model):
     hostname = models.CharField(max_length=100, unique=True)
-    ip_address = models.GenericIPAddressField()
+    ip_address = models.GenericIPAddressField(protocol='both')
     computer_room = models.ForeignKey(ComputerRoom, on_delete=models.CASCADE, related_name='hosts')
     root_password = models.CharField(max_length=128)
     last_password_update = models.DateTimeField(auto_now=True)
